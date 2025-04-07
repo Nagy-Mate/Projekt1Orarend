@@ -38,14 +38,16 @@ export async function initializeDatabase(){
         {day: 'Hétfő', time: 3, subject: "Töri"},
         {day: 'Kedd', time: 4, subject: "Töri"},
         {day: 'Kedd', time: 5, subject: "Php"},
-        {day: 'Szerda', time: 7, subject: "Php"},
-        {day: 'Szerda', time: 8, subject: "Php"},
-        {day: 'Csütörök', time: 8, subject: "Php"},
-        {day: 'Csütörök', time: 8, subject: "Php"},
+        {day: 'Szerda', time: 7, subject: "Js"},
+        {day: 'Szerda', time: 8, subject: "Js"},
+        {day: 'Csütörök', time: 3, subject: "C#"},
+        {day: 'Csütörök', time: 4, subject: "C#"},
+        {day: 'Péntek', time: 2, subject: "Angol"},
+        {day: 'Péntek', time:3, subject: "Php"},
 
     ];
 
-    for(const user of users){
-        await dbRun("INSERT INTO users (name, age) VALUES (?, ?);",[user.name, user.age]);
+    for(const t of timetable){
+        await dbRun("INSERT INTO timetable (day, time, subject) VALUES (?, ?, ?);",[t.day, t.time, t.subject]);
     } 
 }

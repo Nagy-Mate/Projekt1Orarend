@@ -4,52 +4,52 @@ import { initializeDatabase, dbAll, dbGet, dbRun } from './util/database.js';
 const app = express();
 app.use(express.json());
 
-app.get('/', async (req, res)=>{
-    const users = await dbAll("");
+app.get('/timetable', async (req, res)=>{
+    const users = await dbAll("SELECT * FROM timetable");
     res.status(200).json(users);
 });
 
-app.get('//:id', async (req,res) => {
+app.get('/timetable/:id', async (req,res) => {
     const id = req.params.id;
-    const user = await dbGet(" WHERE id = ?;", [id]);
+    const user = await dbGet("SELECT * FROM timetable WHERE id = ?;", [id]);
     if(!user){
-        return res.status(404).json({message: "User not found"});
+        return res.status(404).json({message: "Not found"});
     }
     res.status(200).json(user);
     
 })
 
-app.post('/users', async (req, res) =>{
-    const {name, age} = req.body;
-    if(!name || !age){
+app.post('/timetable', async (req, res) =>{
+    const {day, time, subject} = req.body;
+    if(!day || !time || !subject ){
         return res.status(400).json({message: "Missing data"});
     }
-    const result = await dbRun("INSERT INTO users (name, age) VALUES (?, ?);",[name, age]);
-    res.status(201).json({id: result.lastID,name,age});
+    const result = await dbRun("INSERT INTO timetable (day, time, subject) VALUES (?, ?, ?);",[day, time, subject]);
+    res.status(201).json({id: result.lastID, day, time, subject});
 });
 
-app.put("/users/:id", async (req, res) =>{
+app.put("/timetable/:id", async (req, res) =>{
     const id = req.params.id;
-    const user = dbGet("SELECT * FROM users WHERE id = ?;", [id]);
-    if(!user){
-        return res.status(404).json({message: "User nem található"});
+    const data = dbGet("SELECT * FROM timetable WHERE id = ?;", [id]);
+    if(!data){
+        return res.status(404).json({message: "Not found"});
     }
-    const {name, age} = req.body;
-    if(!name || !age){
+    const {day, time, subject} = req.body;
+    if(!day || time == null || !subject){
         return res.status(400).json({message: "Missing data"});
     }
-    await dbRun("UPDATE users SET name = ?, age = ? WHERE id = ?;",[name, age, id]);
-    res.status(200).json({id, name, age});
+    await dbRun("UPDATE timetable SET day = ?, time = ?, subject = ? WHERE id = ?;",[day, time, subject, id]);
+    res.status(200).json({id, day, time, subject});
 });
 
-app.delete("/users/:id", async (req, res)=>{
+app.delete("/timetable/:id", async (req, res)=>{
     const id = req.params.id;
-    const user = dbGet("SELECT * FROM users WHERE id = ?;", [id]);
-    if(!user){
-        return res.status(404).json({message: "User nem található"});
+    const data = dbGet("SELECT * FROM timetable WHERE id = ?;", [id]);
+    if(!data){
+        return res.status(404).json({message: "Not found"});
     }
-    await dbRun("DELETE FROM users WHERE id = ?;", [id]);
-    res.status(200).json({message: "Sikeres törlés!%"});
+    await dbRun("DELETE FROM timetable WHERE id = ?;", [id]);
+    res.status(200).json({message: "Successfuly deleted! "});
 });
 
 app.use((req, res, next, err) =>{
