@@ -15,7 +15,6 @@ async function displayTimetable() {
 
     const dayOrder = ['Hétfő', 'Kedd', 'Szerda', 'Csütörtök', 'Péntek'];
 
-    // Térkép létrehozása: { 'Hétfő': {1: 'Magyar', 2: 'Matek', ...}, ... }
     const timetableMap = {};
     dayOrder.forEach(day => {
         timetableMap[day] = {};
@@ -27,7 +26,6 @@ async function displayTimetable() {
         }
     });
 
-    // Táblázat létrehozása
     let timetable = '<table>';
     timetable += '<tr><th>Nap</th>';
     for (let i = 0; i <= 12; i++) {
@@ -35,7 +33,6 @@ async function displayTimetable() {
     }
     timetable += '</tr>';
 
-    // Soronként hozzáadjuk a napokat és órákat
     dayOrder.forEach(day => {
         timetable += `<tr><td>${day}</td>`;
         for (let i = 0; i <= 12; i++) {
