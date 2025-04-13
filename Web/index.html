@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Órarend</title>
+</head>
+<body>
+    <h1>Órarend</h1>
+    <div id="timetable"></div>
+
+    <div>
+        <h2>Hozzáadás</h2>
+        <label for="dayForAdd">Válasszon egy napot: </label>
+        <select name="dayForAdd" id="dayForAdd">
+            <option value="Hétfő">Hétfő</option>
+            <option value="Kedd">Kedd</option>
+              <option value="Szerda">Szerda</option>
+            <option value="Csütörtök">Csütörtök</option>
+            <option value="Péntek">Péntek</option>
+        </select>
+        <br>
+
+        <label for="timeForAdd">Válasszon egy órát: </label>
+        <input type="range" id="timeForAdd" name="timeForAdd" min="0" max="12"> 
+        <output id="value"></output>
+
+        <br>
+        <label for="subjectForAdd">Adjon meg egy tantárgyat: </label>
+        <input type="text"  id="subjectForAdd" name="subjectForAdd" placeholder="pl.:Magyar" maxlength="25">
+        <br>
+
+        <button id="addButton" onclick="createSubject()">Hozzáadás</button>
+    </div>
+
+    <div>
+        <h2>Törlés</h2>
+        <label for="dayForDelete">Válasszon egy napot: </label>
+        <select name="dayForDelete" id="dayForDelete">
+            <option value="Hétfő">Hétfő</option>
+            <option value="Kedd">Kedd</option>
+              <option value="Szerda">Szerda</option>
+            <option value="Csütörtök">Csütörtök</option>
+            <option value="Péntek">Péntek</option>
+        </select>
+        <br>
+
+        <label for="timeForDelete">Válasszon egy órát: </label>
+        <input type="range" id="timeForDelete" name="timeForDelete" min="0" max="12"> 
+        <output id="value2"></output>
+
+        <br>
+        <button id="deleteButton" onclick="deleteSubject()">Törlés</button>
+    </div>
+
+    <div>
+        <h2>Módosítás</h2>
+        <label for="dayForUpdate">Válasszon egy napot: </label>
+        <select name="dayForUpdate" id="dayForUpdate">
+            <option value="Hétfő">Hétfő</option>
+            <option value="Kedd">Kedd</option>
+              <option value="Szerda">Szerda</option>
+            <option value="Csütörtök">Csütörtök</option>
+            <option value="Péntek">Péntek</option>
+        </select>
+        <br>
+
+        <label for="timeForUpdate">Válasszon egy órát: </label>
+        <input type="range" id="timeForUpdate" name="timeForUpdate" min="0" max="12"> 
+        <output id="value3"></output>
+
+        <br>
+        <label for="subjectForUpdate">Adja meg a tantárgy új nevét: </label>
+        <input type="text" id="subjectForUpdate" name="subjectForUpdate" placeholder="pl.:Matek" maxlength="25">
+        <br>
+ 
+        <button id="updateButton" onclick="editSubject()">Módosítás</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

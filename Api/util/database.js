@@ -33,17 +33,17 @@ export async function initializeDatabase(){
     await dbRun("CREATE TABLE IF NOT EXISTS timetable (id INTEGER PRIMARY KEY AUTOINCREMENT, day STRING, time INTEGER, subject STRING)");
 
     const timetable =[
-        {day: 'Hétfő', time: 1, subject: "Magyar"},
+        {day: 'Szerda', time: 7, subject: "Js"},
         {day: 'Hétfő', time: 2, subject: "Matek"},
         {day: 'Hétfő', time: 3, subject: "Töri"},
-        {day: 'Kedd', time: 4, subject: "Töri"},
-        {day: 'Kedd', time: 5, subject: "Php"},
-        {day: 'Szerda', time: 7, subject: "Js"},
-        {day: 'Szerda', time: 8, subject: "Js"},
-        {day: 'Csütörök', time: 3, subject: "C#"},
-        {day: 'Csütörök', time: 4, subject: "C#"},
-        {day: 'Péntek', time: 2, subject: "Angol"},
         {day: 'Péntek', time:3, subject: "Php"},
+        {day: 'Kedd', time: 5, subject: "Php"},
+        {day: 'Csütörtök', time: 4, subject: "C#"},
+        {day: 'Szerda', time: 8, subject: "Js"},
+        {day: 'Csütörtök', time: 3, subject: "C#"},
+        {day: 'Kedd', time: 4, subject: "Töri"},
+        {day: 'Péntek', time: 2, subject: "Angol"},
+        {day: 'Hétfő', time: 1, subject: "Magyar"},
 
     ];
 

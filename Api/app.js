@@ -1,8 +1,10 @@
-import express from 'express'
+import express from 'express';
+import cors from 'cors';
 import { initializeDatabase, dbAll, dbGet, dbRun } from './util/database.js';
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 app.get('/timetable', async (req, res)=>{
     const users = await dbAll("SELECT * FROM timetable");
