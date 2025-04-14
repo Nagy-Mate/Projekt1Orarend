@@ -61,7 +61,7 @@ app.use((req, res, next, err) =>{
 });
 
 async function startServer() {
-    await initializeDatabase();
+    //await initializeDatabase();
     app.listen(3000, () =>{
         console.log('server runs on 3000') ;
     });

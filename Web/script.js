@@ -175,7 +175,7 @@ input2.addEventListener("input", (event) => {
 const value3 = document.getElementById("value3");
 const input3 = document.getElementById("timeForUpdate");
 value3.textContent = input3.value;
-input3.addEventListener("i  nput", (event) => {
+input3.addEventListener("input", (event) => {
   value3.textContent = event.target.value;
 });
 
